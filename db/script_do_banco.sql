@@ -148,7 +148,7 @@ insert into produto(nomeproduto, descricao, preco, idfoto)values('Monitor','Moni
 
 insert into pedido(idcliente) values(1);
 
-insert into itenspedido(idpedido,idproduto,quantidade)values(1,2,2);
+insert into itenspedido(idpedido,idproduto,quantidade)values(1,1,2);
 
 
 insert into pagamento(idpedido,tipo,descricao,valor,parcelas,valorparcela)values(1,'cartão','Nº 2225|Nome:Martha|Codigo: 745',1713.80,4,428.45);
