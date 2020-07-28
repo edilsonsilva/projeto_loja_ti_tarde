@@ -28,6 +28,30 @@ class Usuario{
         return $stmt;
 
     }
+
+    public function cadastro(){
+        $query = "insert into usuario set nomeusuario=:n, senha=:s, foto=:f";
+
+        $stmt = $this->conexao->prepare($query);
+
+        //Encriptografar a senha com o uso de md5
+        $this->senha = md5($this->senha);
+
+        /*Vamos vincular os dados que veem do app ou navegador com os campos de
+        banco de dados
+        */
+        $stmt->bindParam(":n",$this->nomeusuario);
+        $stmt->bindParam(":s",$this->senha);
+        $stmt->bindParam(":f",$this->foto);
+
+        if($stmt->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 }
 
 
