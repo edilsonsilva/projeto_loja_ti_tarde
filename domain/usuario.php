@@ -52,6 +52,67 @@ class Usuario{
         }
 
     }
+
+    public function alterarSenha(){
+        $query = "update usuario set senha=:s where idusuario=:id";
+
+        $stmt = $this->conexao->prepare($query);
+
+        //Encriptografar a senha com o uso de md5
+        $this->senha = md5($this->senha);
+
+        /*Vamos vincular os dados que veem do app ou navegador com os campos de
+        banco de dados
+        */
+        $stmt->bindParam(":s",$this->senha);
+        $stmt->bindParam(":id",$this->idusuario);
+
+        if($stmt->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function alterarFoto(){
+        $query = "update usuario set foto=:f where idusuario=:id";
+
+        $stmt = $this->conexao->prepare($query);
+
+        /*Vamos vincular os dados que veem do app ou navegador com os campos de
+        banco de dados
+        */
+        $stmt->bindParam(":f",$this->foto);
+        $stmt->bindParam(":id",$this->idusuario);
+
+        if($stmt->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function apagarUsuario(){
+        $query = "delete from usuario where idusuario=:id";
+
+        $stmt = $this->conexao->prepare($query);
+
+        /*Vamos vincular os dados que veem do app ou navegador com os campos de
+        banco de dados
+        */
+        $stmt->bindParam(":id",$this->idusuario);
+      
+
+        if($stmt->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 }
 
 
