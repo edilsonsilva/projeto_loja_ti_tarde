@@ -18,7 +18,7 @@ include_once "../../domain/cadastro.php";
 $database = new Database();
 $db = $database->getConnection();
 
-$cadastro = new cadastro($db);
+$cadastro = new Cadastro($db);
 
 /*
 O cliente irá enviar os dado no formato Json. Porém
@@ -32,22 +32,20 @@ $data = json_decode(file_get_contents("php://input"));
 #Verificar se os dados vindos do usuário estão preenchidos
 if(!empty($data->nomeusuario) && !empty($data->senha) && !empty($data->foto)){
 
-    $cadastro->nomeusuario =     $data->nomeusuario;
-    $cadastro->senha = $data->senha;
-    $cadastro->foto =     $data->foto;
-
-    $cadastro->nomecliente =     $data->nomecliente;
-    $cadastro->cpf =     $data->cpf;
-    $cadastro->sexo =     $data->sexo;
-
-    $cadastro->email =     $data->email;
-    $cadastro->telefone =     $data->telefone;
-    $cadastro->tipo =     $data->tipo;
-    $cadastro->logradouro =     $data->logradouro;
-    $cadastro->numero =     $data->numero;
-    $cadastro->complemento =     $data->complemento;
-    $cadastro->bairro =     $data->bairro;
-    $cadastro->cep =     $data->cep;
+      $cadastro->nomecliente=$data->nomecliente;
+      $cadastro->cpf=$data->cpf;
+      $cadastro->sexo=$data->sexo;
+      $cadastro->telefone=$data->telefone;
+      $cadastro->email=$data->email;
+      $cadastro->tipo=$data->tipo;
+      $cadastro->logradouro=$data->logradouro;
+      $cadastro->numero=$data->numero;
+      $cadastro->complemento=$data->complemento;
+      $cadastro->bairro=$data->bairro;
+      $cadastro->cep=$data->cep;
+      $cadastro->nomeusuario=$data->nomeusuario;
+      $cadastro->senha=$data->senha;
+      $cadastro->foto=$data->foto;
 
     if($cadastro->cadastro()){
         header("HTTP/1.0 201");
@@ -64,6 +62,3 @@ else{
 }
 
 ?>
-
-
-   
