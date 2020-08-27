@@ -23,7 +23,14 @@ public function listar(){
     return $stmt;
 }
 
+public function listarTelaInicial(){
+    $query = "select p.idproduto,p.nomeproduto, p.preco, f.foto1 from produto p inner join foto f on p.idfoto=f.idfoto";
+    $stmt = $this->conexao->prepare($query);
 
+    $stmt->execute();
+
+    return $stmt;
+}
 
 public function cadastro(){
     $query = "insert into produto set nomeproduto=:np, descricao=:d, preco=:p, idfoto=:if";

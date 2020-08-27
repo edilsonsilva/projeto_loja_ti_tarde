@@ -33,6 +33,36 @@ public $idusuario;
     }
 
     public function cadastro(){
+
+
+        $contato = "SELECT * FROM contato order by idcontato desc limit 0,1;";
+        $stmt = $this->conexao->prepare($contato);
+        $rs = $stmt->execute();
+
+        while($linha = $rs->fetch(PDO::FETCH_ASSOC)){
+            $this->idcontato=$linha["idcontato"];
+        }
+
+
+        $endereco = "SELECT * FROM endereco order by idendereco desc limit 0,1;";
+        $stmt = $this->conexao->prepare($endereco);
+        $rs = $stmt->execute();
+
+        while($linha = $rs->fetch(PDO::FETCH_ASSOC)){
+            $this->idendereco=$linha["idendereco"];
+        }
+
+
+        $usuario = "SELECT * FROM usuario order by idusuario desc limit 0,1;";
+        $stmt = $this->conexao->prepare($usuario);
+        $rs = $stmt->execute();
+
+        while($linha = $rs->fetch(PDO::FETCH_ASSOC)){
+            $this->idusuario=$linha["idusuario"];
+        }
+
+
+
         $query = "insert into cliente set nomecliente=:n,cpf=:c,sexo=:s,idcontato=:ic,idendereco=:ie,idusuario=:iu";
 
         $stmt = $this->conexao->prepare($query);
