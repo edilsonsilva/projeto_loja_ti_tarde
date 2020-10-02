@@ -5,6 +5,7 @@ class Login{
     public $idusuario;
     public $nomeusuario;
     public $foto;
+    public $idcliente;
     public $nomecliente;
     public $cpf;
     public $sexo;
@@ -30,6 +31,7 @@ public function login(){
         us.idusuario,
         us.nomeusuario,
         us.foto,
+        cl.idcliente,
         cl.nomecliente,
         cl.cpf,
         cl.sexo,

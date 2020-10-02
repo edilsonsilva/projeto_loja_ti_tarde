@@ -23,6 +23,19 @@ public function listar(){
     return $stmt;
 }
 
+public function detalheProduto($id){
+    $query = "select p.idproduto, p.nomeproduto, p.descricao, p.preco, f.foto1,f.foto2,f.foto3,foto4
+    from produto p inner join foto f on p.idfoto=f.idfoto where idproduto=:id";
+    $stmt=$this->conexao->prepare($query);
+
+    $stmt->bindParam(":id",$id);
+
+    $stmt->execute();
+
+    return $stmt;
+}
+
+
 public function listarTelaInicial(){
     $query = "select p.idproduto,p.nomeproduto, p.preco, f.foto1 from produto p inner join foto f on p.idfoto=f.idfoto";
     $stmt = $this->conexao->prepare($query);
@@ -31,6 +44,18 @@ public function listarTelaInicial(){
 
     return $stmt;
 }
+
+
+public function carrinho($id){
+    $query = "select p.idproduto,p.nomeproduto, p.preco, f.foto1 from produto p inner join foto f on p.idfoto=f.idfoto where idproduto in(".$id.")";
+    $stmt = $this->conexao->prepare($query);
+
+    $stmt->execute();
+
+    return $stmt;
+}
+
+
 
 public function cadastro(){
     $query = "insert into produto set nomeproduto=:np, descricao=:d, preco=:p, idfoto=:if";

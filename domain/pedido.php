@@ -38,13 +38,11 @@ class Pedido{
         */
         $stmt->bindParam(":idcli",$this->idcliente);
 
-        if($stmt->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        $stmt->execute();
 
+        $this->idpedido = $this->conexao->lastInsertId();
+
+        return $this->idpedido;
     }
 }
 
