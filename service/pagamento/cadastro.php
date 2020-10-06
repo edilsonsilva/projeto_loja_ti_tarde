@@ -31,10 +31,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 #Verificar se os dados vindos do usuário estão preenchidos
 if(!empty($data->idcliente)){
-
-    $pagamento->idpagamento=$data->idpagamento;
-$pagamento->idpedido=$data->idpedido;
-$pagamento->tipo;=$data->tipo
+$pagamento->tipo=$data->tipo;
 $pagamento->descricao=$data->descricao;
 $pagamento->valor=$data->valor;
 $pagamento->parcelas=$data->parcelas;

@@ -26,6 +26,7 @@ public function __construct($db){
 }
 
 
+
 public function cadastro(){
 
     $query = "insert into usuario set nomeusuario=:n, senha=:s, foto=:f";
